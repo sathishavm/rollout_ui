@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RolloutUI</title>
+    <link href='//fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css'>
+    <link href="<%=u 'rollout_ui/application.css' %>" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h1><img alt="Rollout" src="<%=u 'rollout_ui/rollout.png' %>" /></h1>
+      <%= yield %>
+    </div>
+
+    <div id="footer">
+      <p>Powered by RolloutUi v<%= RolloutUi::Version %></p>
+    </div>
+  </body>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script src="<%=u 'rollout_ui/application.js' %>" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("select").chosen({no_results_text: "No groups matched"});
+      $("input.users").chosen();
+
+      $("select, input.users").change(function() {
+        $(this).closest("form").submit();
+      });
+    });
+  </script>
+</html>
